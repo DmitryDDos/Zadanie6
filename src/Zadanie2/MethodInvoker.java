@@ -7,8 +7,11 @@ public class MethodInvoker {
         Method[] methods = obj.getClass().getDeclaredMethods();
         for (Method method : methods) {
             if (method.isAnnotationPresent(Invoke.class)) {
+                // Выводим информацию о том, что метод аннотирован
+                System.out.println("Метод " + method.getName() + " аннотирован аннотацией @Invoke.");
                 try {
-                    method.invoke(obj); // Вызов метода
+                    Object result = method.invoke(obj); // Вызов метода и получение результата
+                    System.out.println("Результат вызова метода: " + result); // Вывод результата
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
